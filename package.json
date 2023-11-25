@@ -1,17 +1,16 @@
 {
-  "name": "discord-bot-template",
+  "name": "lowperformer-prevention",
   "version": "1.0.0",
-  "description": "A Discord bot boilerplate including TypeScript and ESLint.",
+  "description": "A Discord bot for university students, providing personalized reminders to prevent missed homework deadlines.",
   "author": {
-    "email": "fellipeutaka@gmail.com",
-    "name": "Fellipe Utaka"
+    "name": "Christoph Waffler"
   },
   "license": "MIT",
-  "private": true,
-  "homepage": "https://github.com/fellipeutaka/discord-bot-template",
+  "private": false,
+  "homepage": "https://github.com/chrissiwaffler/lowperformer-prevention",
   "repository": {
     "type": "git",
-    "url": "https://github.com/fellipeutaka/discord-bot-template.git"
+    "url": "https://github.com/chrissiwaffler/lowperformer-prevention.git"
   },
   "main": "dist/index.js",
   "scripts": {
