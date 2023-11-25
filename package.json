@@ -1,0 +1,45 @@
+{
+  "name": "discord-bot-template",
+  "version": "1.0.0",
+  "description": "A Discord bot boilerplate including TypeScript and ESLint.",
+  "author": {
+    "email": "fellipeutaka@gmail.com",
+    "name": "Fellipe Utaka"
+  },
+  "license": "MIT",
+  "private": true,
+  "homepage": "https://github.com/fellipeutaka/discord-bot-template",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fellipeutaka/discord-bot-template.git"
+  },
+  "main": "dist/index.js",
+  "scripts": {
+    "dev": "bun run --watch src/index.ts",
+    "build": "bun build ./src/index.ts --outdir ./dist --target bun",
+    "start": "bun run ./dist/index.js",
+    "format": "prettier --write \"**/*.{json,ts}\"",
+    "lint": "eslint . --ext ts --fix"
+  },
+  "dependencies": {
+    "bun": "^1.0.13",
+    "cron": "^3.1.6",
+    "discord.js": "^14.7.1",
+    "dotenv": "^16.0.3"
+  },
+  "devDependencies": {
+    "@types/node": "^18.13.0",
+    "@typescript-eslint/eslint-plugin": "^5.51.0",
+    "@typescript-eslint/parser": "^5.51.0",
+    "bun-types": "^1.0.12",
+    "eslint": "^8.33.0",
+    "eslint-config-prettier": "^8.6.0",
+    "eslint-plugin-import": "^2.25.2",
+    "eslint-plugin-n": "^15.0.0",
+    "eslint-plugin-promise": "^6.0.0",
+    "prettier": "^2.8.4",
+    "tsup": "^6.6.0",
+    "tsx": "^3.12.3",
+    "typescript": "^4.9.5"
+  }
+}
