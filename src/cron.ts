@@ -13,7 +13,6 @@ export const cronJob = CronJob.from({
   onTick: async () => {
     const channel = client.channels.cache.get(CHANNEL_ID);
 
-    // TODO: activate again
     if (!(channel instanceof TextChannel)) {
       console.debug("Channel is not a text channel");
       return;
