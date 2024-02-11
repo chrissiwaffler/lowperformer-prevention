@@ -29,6 +29,28 @@ export const cronJob = CronJob.from({
     }
 
     const now = new Date();
+
+    // if after sys prog deadline, send congrats message and return
+    const deadline = new Date("2024-02-12T14:00:00.000Z");
+    deadline.setUTCHours(14, 0, 0, 0);
+    const noMoreCongrats = new Date("2024-02-12T14:30:00.000Z");
+    noMoreCongrats.setUTCHours(14, 30, 0, 0);
+    if (now > deadline && now < noMoreCongrats) {
+      const userId = USER_ID;
+      const mention = `<@${userId}>`;
+      const content = `${mention}, Glückwunsch! Du hast das SysProg Praktikum (erfolgreich) abgeschlossen!`;
+      const message = await channel.send(content);
+      addCongratsReactions(CHANNEL_ID, message.id);
+      lastMessageId = message.id;
+
+      console.debug(content);
+      return;
+    }
+
+    if (now > noMoreCongrats) {
+      return;
+    }
+
     const nextMonday = new Date();
 
     // Set nextMonday to the next Monday at 17:26
@@ -75,6 +97,28 @@ async function addReactionsToMessage(
     const message = await channel.messages.fetch(messageId);
 
     for (const reaction of config.reactions) {
+      await message.react(reaction);
+    }
+  } catch (error) {
+    console.error("Error adding reactions:", error);
+  }
+}
+
+async function addCongratsReactions(
+  channelId: string,
+  messageId: string
+): Promise<void> {
+  try {
+    const channel = client.channels.cache.get(channelId) as TextChannel;
+
+    if (!channel) {
+      console.error("Channel not found");
+      return;
+    }
+
+    const message = await channel.messages.fetch(messageId);
+
+    for (const reaction of config.congratsReactions) {
       await message.react(reaction);
     }
   } catch (error) {
